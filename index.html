@@ -1,0 +1,187 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partners In Health Engage - Kansas City</title>
+    <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <link rel='stylesheet' href='webicons/webicons.css' />
+    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
+    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+    <script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
+    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+    <script>
+      $(document).ready(function() {
+
+          // page is now ready, initialize the calendar...
+
+          $('#calendar').fullCalendar({
+            header: {
+              left: 'prv,next today',
+              center: 'title',
+              right: 'month,basicWeek,basicDay'
+            },
+            events: 'YOUR-GOOGLE-XML-FEED-URL',
+            eventClick: function(event) {
+              window.open(event.url, 'gcalevent', 'width=900,height=600');
+              return false;
+            },
+            eventRender: function(event, element, view) {         
+              var ntoday = new Date().getTime();
+              var eventEnd = moment( event.end ).valueOf();
+              var eventStart = moment( event.start ).valueOf();
+              if (!event.end){
+                if (eventStart < ntoday){
+                  element.addClass("past-event");
+                  element.children().addClass("past-event");
+                }
+              } else {
+                if (eventEnd < ntoday){
+                  element.addClass("past-event");
+                  element.children().addClass("past-event");
+                }
+              }
+              if ( event.allDay === true ) {
+                element.addClass("allday-event");
+                element.children().addClass("allday-event");
+              }
+            }
+          });
+          var event={id:1 , title: 'PIH Engage-KC General Meeting', start: "2016-10-05T19:30", end: "2016-10-05T20:30" };
+
+          $('#calendar').fullCalendar( 'renderEvent', event, true);
+
+      });
+    </script>
+  </head>
+  <body>
+
+    
+
+    <!-- Start Top Bar -->
+    <div style="width: 100%;" class="top-bar">
+      <div class="row">
+        <div class="top-bar-left">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="name"><a href="#" style="width:22rem;"><img src="images/logo.png"/></a> </li>
+            <li><a style="margin-top:120px;" href="#">About</a></li>
+            <li><a style="margin-top:120px;"  href="#">Calendar</a></li>
+            <li><a href="#" class="fc-webicon facebook large">Like us on Facebook</a></li>
+            <li><a href="#" class="fc-webicon twitter large">Like us on Facebook</a></li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+            <li><input style="margin-top:120px;" type="search" placeholder="Search"></li>
+            <li><button style="margin-top:120px;" type="button" class="button">Search</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+    <br>
+    <!-- You can now combine a row and column if you just need a 12 column row -->
+<!--     <div class="row columns">
+      <nav aria-label="You are here:" role="navigation">
+        <ul class="breadcrumbs">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Features</a></li>
+          <li class="disabled">Gene Splicing</li>
+          <li>
+            <span class="show-for-sr">Current: </span> Cloning
+          </li>
+        </ul>
+      </nav>
+    </div> -->
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <img class="thumbnail" src="images/14711490_10211327079323516_3263920500150419950_o.jpg">
+        <div class="row small-up-4">
+          <div class="column">
+            <img class="thumbnail" src="http://placehold.it/250x200">
+          </div>
+          <div class="column">
+            <img class="thumbnail" src="http://placehold.it/250x200">
+          </div>
+          <div class="column">
+            <img class="thumbnail" src="http://placehold.it/250x200">
+          </div>
+          <div class="column">
+            <img class="thumbnail" src="http://placehold.it/250x200">
+          </div>
+        </div>
+      </div>
+      <div class="medium-6 large-5 columns">
+        <h3>Meeting With Congress</h3>
+        <p>We met with House of Representatives Sam Graves' staff member, Ashley Burke! She was very receptive to the Reach Every Mother and Child Act. We will let you know if Sam Grave's officially cosponsors the act! Hope to see you all on Monday at the meeting with Senator Roy Blunt's staff member.</p>
+        </div>
+
+    <div class="column row">
+      <hr>
+      <ul class="tabs" data-tabs id="example-tabs">
+        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Events</a></li>
+        <li class="tabs-title"><a href="#panel2">Similar Products</a></li>
+      </ul>
+      <div class="tabs-content" data-tabs-content="example-tabs">
+        <div class="tabs-panel is-active" id="panel1">
+          <h4>Events</h4>
+            <div id="calendar"></div>
+        </div>
+        <div class="tabs-panel" id="panel2">
+          <div class="row medium-up-3 large-up-5">
+            <div class="column">
+              <img class="thumbnail" src="http://placehold.it/350x200">
+              <h5>Other Product <small>$22</small></h5>
+              <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+              <a href="#" class="button hollow tiny expanded">Buy Now</a>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="http://placehold.it/350x200">
+              <h5>Other Product <small>$22</small></h5>
+              <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+              <a href="#" class="button hollow tiny expanded">Buy Now</a>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="http://placehold.it/350x200">
+              <h5>Other Product <small>$22</small></h5>
+              <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+              <a href="#" class="button hollow tiny expanded">Buy Now</a>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="http://placehold.it/350x200">
+              <h5>Other Product <small>$22</small></h5>
+              <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+              <a href="#" class="button hollow tiny expanded">Buy Now</a>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="http://placehold.it/350x200">
+              <h5>Other Product <small>$22</small></h5>
+              <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+              <a href="#" class="button hollow tiny expanded">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row column">
+      <hr>
+      <ul class="menu">
+        <li>Yeti Store</li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="float-right">Copyright 2016</li>
+      </ul>
+    </div>
+    <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
+
+
+    
