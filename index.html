@@ -22,9 +22,11 @@
               center: 'title',
               right: 'month,basicWeek,basicDay'
             },
-            events: 'YOUR-GOOGLE-XML-FEED-URL',
             eventClick: function(event) {
-              window.open(event.url, 'gcalevent', 'width=900,height=600');
+              $("#eventTime").text(moment( event.start ).format('dddd, MMMM Do hh:mma') + " - " + moment( event.end ).format('hh:mma'));
+              $("#eventTitle").text(event.title);
+              $("#eventDescription").text('We\'re kicking off the year at happy hour at McCormick and Schmick\'s! This is a chance for all our team members (new and returning) to get together, chat about health and social justice, and enjoy some sweet happy hour deals. Feel free to come by if you missed the info sessions but still want to get involved!');
+              $("#eventModal").foundation('open');
               return false;
             },
             eventRender: function(event, element, view) {         
@@ -67,8 +69,8 @@
             <li class="name"><a href="#" style="width:22rem;"><img src="images/logo.png"/></a> </li>
             <li><a style="margin-top:120px;" href="#">About</a></li>
             <li><a style="margin-top:120px;"  href="#">Calendar</a></li>
-            <li><a href="#" class="fc-webicon facebook large">Like us on Facebook</a></li>
-            <li><a href="#" class="fc-webicon twitter large">Like us on Facebook</a></li>
+<!--             <li><a href="#" class="fc-webicon facebook large">Like us on Facebook</a></li>
+            <li><a href="#" class="fc-webicon twitter large">Like us on Facebook</a></li> -->
           </ul>
         </div>
         <div class="top-bar-right">
@@ -175,6 +177,19 @@
         <li><a href="#">Contact</a></li>
         <li class="float-right">Copyright 2016</li>
       </ul>
+    </div>
+    <div class="tiny reveal" id="eventModal" data-reveal>
+      <div class="row">
+        <div class="medium-12 columns">
+        <h3 id="eventTitle" class="text-center"></h1>
+        <h5 id="eventTime" class="text-center"></h1>
+        <p id="eventDescription" class="modal-content text-center">
+        </p>
+        <p class="text-center no-margin">
+        <button class="button" data-close>OK</button>
+        </p>
+        </div>
+      </div>
     </div>
     <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script>
